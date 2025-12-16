@@ -7,37 +7,50 @@ import Link from "next/link";
 export default function BasecampHeader() {
   return (
     <motion.header
-      initial={{ opacity: 0, y: -20 }}
-      animate={{ opacity: 1, y: 0 }}
-      className="bg-[#1d2d35] text-white"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      className="bg-[#1d2d35]"
     >
-      <nav className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <nav className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
         <Link href="/basecamp" className="flex items-center gap-2">
-          <div className="w-10 h-10 bg-[#f4bd4f] rounded-lg flex items-center justify-center">
-            <BarChart3 className="w-6 h-6 text-[#1d2d35]" />
+          <div className="w-9 h-9 bg-[#ffc800] rounded-lg flex items-center justify-center">
+            <BarChart3 className="w-5 h-5 text-[#1d2d35]" />
           </div>
-          <span className="text-xl font-bold">WP Statistics</span>
+          <span className="text-lg font-bold text-white">WP Statistics</span>
         </Link>
 
-        <div className="hidden md:flex items-center gap-8 text-sm">
-          <a href="#how-it-works" className="hover:text-[#f4bd4f] transition-colors">
+        <div className="hidden md:flex items-center gap-6 text-sm text-gray-300">
+          <a href="#how-it-works" className="hover:text-white transition-colors">
             How it works
           </a>
-          <a href="#features" className="hover:text-[#f4bd4f] transition-colors">
+          <a href="#before-after" className="hover:text-white transition-colors">
+            Before & After
+          </a>
+          <a href="#features" className="hover:text-white transition-colors">
             Features
           </a>
-          <a href="#pricing" className="hover:text-[#f4bd4f] transition-colors">
+          <a href="#pricing" className="hover:text-white transition-colors">
             Pricing
           </a>
+          <span className="text-gray-500">|</span>
           <a
             href="https://wordpress.org/plugins/wp-statistics/"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-5 py-2.5 bg-[#f4bd4f] text-[#1d2d35] rounded-full font-semibold hover:bg-[#e5ad40] transition-colors"
+            className="text-white hover:text-gray-200 transition-colors"
           >
-            Try it free
+            Sign in
           </a>
         </div>
+
+        <a
+          href="https://wordpress.org/plugins/wp-statistics/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="px-4 py-2 bg-[#ffc800] text-[#1d2d35] rounded-full font-bold text-sm hover:bg-[#e6b400] transition-colors"
+        >
+          Try it free
+        </a>
       </nav>
     </motion.header>
   );

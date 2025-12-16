@@ -1,19 +1,34 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, CheckCircle2 } from "lucide-react";
 
 export default function BasecampHero() {
   return (
-    <section className="bg-[#1d2d35] text-white py-20 md:py-32">
-      <div className="max-w-4xl mx-auto px-6 text-center">
+    <section className="bg-[#fffef9] py-16 md:py-24 border-b border-gray-200">
+      <div className="max-w-3xl mx-auto px-6 text-center">
+        {/* Decorative Elements - Basecamp style scattered icons */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.3 }}
+          className="relative mb-8"
+        >
+          {/* Scattered decorative elements like Basecamp */}
+          <div className="absolute -top-8 left-1/4 text-4xl rotate-12">📊</div>
+          <div className="absolute -top-4 right-1/4 text-3xl -rotate-12">🔒</div>
+          <div className="absolute top-0 left-10 text-2xl rotate-6">📈</div>
+          <div className="absolute -top-6 right-10 text-2xl -rotate-6">🌍</div>
+          <div className="hidden md:block absolute top-4 -left-4 text-3xl">✨</div>
+          <div className="hidden md:block absolute top-2 -right-4 text-3xl">🎯</div>
+        </motion.div>
+
         {/* Problem Statement */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-[#f4bd4f] text-lg md:text-xl font-medium mb-6"
+          className="text-lg md:text-xl text-gray-600 mb-4 mt-12"
         >
-          Frustrated with analytics tools?
+          Frustrated with analytics?
         </motion.p>
 
         {/* Main Headline */}
@@ -21,10 +36,15 @@ export default function BasecampHero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-8"
+          className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#1d2d35] leading-tight mb-6"
         >
-          Understanding your visitors{" "}
-          <span className="text-[#f4bd4f]">shouldn&apos;t require a PhD.</span>
+          Understanding your visitors<br />
+          <span className="relative inline-block">
+            shouldn&apos;t be this hard.
+            <svg className="absolute -bottom-2 left-0 w-full" height="8" viewBox="0 0 200 8" fill="none">
+              <path d="M1 5.5C47 2 153 2 199 5.5" stroke="#ffc800" strokeWidth="4" strokeLinecap="round"/>
+            </svg>
+          </span>
         </motion.h1>
 
         {/* Subheadline */}
@@ -32,11 +52,11 @@ export default function BasecampHero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed"
+          className="text-xl md:text-2xl text-gray-600 mb-10 leading-relaxed"
         >
-          WP Statistics is refreshingly simple analytics for WordPress.
-          No external accounts. No complicated setup. No privacy headaches.
-          Just clear insights about your website, right in your dashboard.
+          WP Statistics is refreshingly simple,{" "}
+          <span className="bg-[#ffc800] px-1">privacy-first</span> analytics
+          for WordPress — with a 14-year track record to back it up.
         </motion.p>
 
         {/* CTA */}
@@ -44,39 +64,19 @@ export default function BasecampHero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12"
+          className="flex flex-col items-center gap-4"
         >
           <a
             href="https://wordpress.org/plugins/wp-statistics/"
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex items-center gap-2 px-8 py-4 bg-[#f4bd4f] text-[#1d2d35] rounded-full font-bold text-lg hover:bg-[#e5ad40] transition-all"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-[#ffc800] text-[#1d2d35] rounded-full font-bold text-lg hover:bg-[#e6b400] transition-colors shadow-sm"
           >
-            Try WP Statistics free
-            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            Try WP Statistics for free →
           </a>
-          <span className="text-gray-400 text-sm">
-            Free forever. No credit card required.
-          </span>
-        </motion.div>
-
-        {/* Trust Points */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4 }}
-          className="flex flex-wrap items-center justify-center gap-6 text-sm text-gray-300"
-        >
-          {[
-            "600,000+ active sites",
-            "14 years of development",
-            "100% privacy-focused",
-          ].map((point) => (
-            <div key={point} className="flex items-center gap-2">
-              <CheckCircle2 className="w-4 h-4 text-[#4ade80]" />
-              <span>{point}</span>
-            </div>
-          ))}
+          <p className="text-gray-500 text-sm">
+            Free forever · No credit card · 600,000+ active sites
+          </p>
         </motion.div>
       </div>
     </section>

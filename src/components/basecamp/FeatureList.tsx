@@ -1,124 +1,77 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Check } from "lucide-react";
 
 const features = [
-  {
-    question: "Can I see who's visiting my site right now?",
-    answer: "Yes! See real-time visitors as they browse your site.",
-  },
-  {
-    question: "Does it work with my caching plugin?",
-    answer: "Yes! Compatible with all major caching plugins.",
-  },
-  {
-    question: "Can I track specific posts and pages?",
-    answer: "Yes! See stats for every piece of content.",
-  },
-  {
-    question: "Will it slow down my site?",
-    answer: "No! Lightweight tracking with minimal impact.",
-  },
-  {
-    question: "Can I see where visitors come from?",
-    answer: "Yes! Country, city, browser, device - all there.",
-  },
-  {
-    question: "Does it track search keywords?",
-    answer: "Yes! See what people searched to find you.",
-  },
-  {
-    question: "Can I exclude my own visits?",
-    answer: "Yes! Filter out admins, editors, or any role.",
-  },
-  {
-    question: "Is it GDPR compliant?",
-    answer: "Yes! No cookies required. Privacy-first design.",
-  },
-  {
-    question: "Can I export my data?",
-    answer: "Yes! Export to CSV anytime you want.",
-  },
-  {
-    question: "Does it integrate with other plugins?",
-    answer: "Yes! Works with popular page builders and themes.",
-  },
-  {
-    question: "Can I see stats in the admin bar?",
-    answer: "Yes! Quick stats always visible while you work.",
-  },
-  {
-    question: "Is there an API?",
-    answer: "Yes! REST API available for developers.",
-  },
+  { q: "Can I see real-time visitors?", a: "Yes! Watch visitors browse your site live." },
+  { q: "Does it work with caching?", a: "Yes! Works with all major caching plugins." },
+  { q: "Can I track specific pages?", a: "Yes! See stats for every piece of content." },
+  { q: "Will it slow my site?", a: "No! Lightweight with minimal impact." },
+  { q: "Can I see visitor locations?", a: "Yes! Country, city, browser, device." },
+  { q: "Does it track search keywords?", a: "Yes! See how people find you." },
+  { q: "Can I exclude my own visits?", a: "Yes! Filter by role, IP, or user." },
+  { q: "Is it GDPR compliant?", a: "Yes! No cookies, privacy-first." },
+  { q: "Can I export data?", a: "Yes! Export to CSV anytime." },
+  { q: "Does it support WooCommerce?", a: "Yes! Track products and sales." },
+  { q: "Can I see stats in admin bar?", a: "Yes! Quick stats always visible." },
+  { q: "Is there an API?", a: "Yes! Full REST API for developers." },
 ];
 
 export default function FeatureList() {
   return (
-    <section className="py-24 bg-white" id="features">
-      <div className="max-w-6xl mx-auto px-6">
+    <section className="py-20 bg-white border-b border-gray-200" id="features">
+      <div className="max-w-3xl mx-auto px-6">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-[#1d2d35] mb-4">
-            The answer is <span className="text-[#4ade80]">YES!</span>
+          <h2 className="text-3xl md:text-4xl font-bold text-[#1d2d35] mb-4">
+            Got questions? <span className="bg-[#ffc800] px-2">We&apos;ve got answers.</span>
           </h2>
-          <p className="text-xl text-gray-600">
-            Whatever you&apos;re wondering, we probably already thought of it.
-          </p>
         </motion.div>
 
-        {/* Features Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {features.map((feature, index) => (
+        {/* Feature Questions - Basecamp FAQ Style */}
+        <div className="space-y-4">
+          {features.map((item, index) => (
             <motion.div
-              key={feature.question}
-              initial={{ opacity: 0, y: 20 }}
+              key={item.q}
+              initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.03 }}
-              className="group p-6 bg-[#f7f5f2] rounded-2xl hover:bg-[#1d2d35] transition-colors duration-300"
+              className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 py-3 border-b border-gray-100 last:border-0"
             >
-              <p className="font-semibold text-[#1d2d35] group-hover:text-white mb-3 transition-colors">
-                {feature.question}
-              </p>
-              <div className="flex items-start gap-2">
-                <div className="w-6 h-6 bg-[#4ade80] rounded-full flex items-center justify-center flex-shrink-0">
-                  <Check className="w-4 h-4 text-white" />
-                </div>
-                <p className="text-gray-600 group-hover:text-gray-300 text-sm transition-colors">
-                  {feature.answer}
-                </p>
-              </div>
+              <span className="text-[#1d2d35] font-medium flex-1">
+                {item.q}
+              </span>
+              <span className="bg-[#ffc800] px-3 py-1 text-[#1d2d35] font-bold text-sm rounded inline-block w-fit">
+                {item.a}
+              </span>
             </motion.div>
           ))}
         </div>
 
-        {/* Bottom CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+        {/* More Questions */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="text-center mt-16"
+          className="text-center text-gray-500 mt-10"
         >
-          <p className="text-gray-600 mb-6">
-            Got a question not listed here?{" "}
-            <a
-              href="https://wp-statistics.com/contact/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[#1d2d35] font-semibold hover:underline"
-            >
-              Just ask us
-            </a>
-            .
-          </p>
-        </motion.div>
+          Still have questions?{" "}
+          <a
+            href="https://wp-statistics.com/contact/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[#1d2d35] font-semibold underline decoration-[#ffc800] decoration-2 underline-offset-2"
+          >
+            Just ask us
+          </a>
+          . We&apos;re real humans.
+        </motion.p>
       </div>
     </section>
   );

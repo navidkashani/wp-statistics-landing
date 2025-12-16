@@ -1,156 +1,116 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Check, Sparkles, ArrowRight } from "lucide-react";
+import { Check } from "lucide-react";
 import Link from "next/link";
-
-const plans = [
-  {
-    name: "Free",
-    price: "$0",
-    period: "forever",
-    description: "Everything you need to understand your visitors.",
-    features: [
-      "Unlimited pageviews",
-      "Real-time stats",
-      "Visitor locations",
-      "Top pages & referrers",
-      "Device & browser data",
-      "Search keywords",
-      "Admin bar stats",
-      "GDPR compliant",
-    ],
-    cta: "Download Free",
-    href: "https://wordpress.org/plugins/wp-statistics/",
-    popular: false,
-  },
-  {
-    name: "Premium",
-    price: "$119",
-    period: "/year",
-    description: "For serious site owners who want the full picture.",
-    features: [
-      "Everything in Free",
-      "Marketing campaigns",
-      "Advanced reporting",
-      "Custom post types",
-      "Download tracking",
-      "REST API access",
-      "White-label option",
-      "Priority support",
-    ],
-    cta: "Go Premium",
-    href: "/premium",
-    popular: true,
-  },
-];
 
 export default function BasecampPricing() {
   return (
-    <section className="py-24 bg-[#f7f5f2]" id="pricing">
-      <div className="max-w-5xl mx-auto px-6">
+    <section className="py-20 bg-white border-b border-gray-200" id="pricing">
+      <div className="max-w-3xl mx-auto px-6">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-[#1d2d35] mb-6">
+          <h2 className="text-3xl md:text-4xl font-bold text-[#1d2d35] mb-4">
             Simple, honest pricing.
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Start free and upgrade when you&apos;re ready. No tricks, no hidden fees,
-            no &ldquo;contact us for pricing&rdquo; nonsense.
+          <p className="text-xl text-gray-600">
+            No tricks. No &ldquo;contact sales.&rdquo; Just straightforward options.
           </p>
         </motion.div>
 
         {/* Pricing Cards */}
-        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-          {plans.map((plan, index) => (
-            <motion.div
-              key={plan.name}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              className={`relative rounded-3xl p-8 ${
-                plan.popular
-                  ? "bg-[#1d2d35] text-white"
-                  : "bg-white border-2 border-gray-200"
-              }`}
+        <div className="grid md:grid-cols-2 gap-6">
+          {/* Free Plan */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="bg-[#fffef9] rounded-xl p-8 border border-gray-200"
+          >
+            <h3 className="text-xl font-bold text-[#1d2d35] mb-2">Free</h3>
+            <p className="text-gray-600 mb-4">Everything you need to get started.</p>
+
+            <div className="mb-6">
+              <span className="text-4xl font-bold text-[#1d2d35]">$0</span>
+              <span className="text-gray-500"> forever</span>
+            </div>
+
+            <ul className="space-y-3 mb-8">
+              {[
+                "Unlimited pageviews",
+                "Real-time stats",
+                "Visitor locations",
+                "Top pages & referrers",
+                "Search keywords",
+                "GDPR compliant",
+              ].map((feature) => (
+                <li key={feature} className="flex items-center gap-3 text-gray-600">
+                  <Check className="w-5 h-5 text-green-500 flex-shrink-0" />
+                  {feature}
+                </li>
+              ))}
+            </ul>
+
+            <a
+              href="https://wordpress.org/plugins/wp-statistics/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block w-full text-center py-3 border-2 border-[#1d2d35] text-[#1d2d35] rounded-full font-bold hover:bg-[#1d2d35] hover:text-white transition-colors"
             >
-              {plan.popular && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                  <span className="inline-flex items-center gap-1.5 px-4 py-1.5 bg-[#f4bd4f] text-[#1d2d35] rounded-full text-sm font-bold">
-                    <Sparkles className="w-4 h-4" />
-                    Most Popular
-                  </span>
-                </div>
-              )}
+              Download Free →
+            </a>
+          </motion.div>
 
-              <div className="mb-6">
-                <h3 className={`text-2xl font-bold mb-2 ${plan.popular ? "text-white" : "text-[#1d2d35]"}`}>
-                  {plan.name}
-                </h3>
-                <p className={plan.popular ? "text-gray-300" : "text-gray-600"}>
-                  {plan.description}
-                </p>
-              </div>
+          {/* Premium Plan */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="bg-[#1d2d35] rounded-xl p-8 text-white relative overflow-hidden"
+          >
+            <div className="absolute top-4 right-4">
+              <span className="bg-[#ffc800] text-[#1d2d35] text-xs font-bold px-3 py-1 rounded-full">
+                POPULAR
+              </span>
+            </div>
 
-              <div className="mb-8">
-                <span className={`text-5xl font-bold ${plan.popular ? "text-white" : "text-[#1d2d35]"}`}>
-                  {plan.price}
-                </span>
-                <span className={plan.popular ? "text-gray-300" : "text-gray-500"}>
-                  {plan.period}
-                </span>
-              </div>
+            <h3 className="text-xl font-bold mb-2">Premium</h3>
+            <p className="text-gray-400 mb-4">For those who want the full picture.</p>
 
-              <ul className="space-y-3 mb-8">
-                {plan.features.map((feature) => (
-                  <li key={feature} className="flex items-center gap-3">
-                    <div className={`w-5 h-5 rounded-full flex items-center justify-center ${
-                      plan.popular ? "bg-[#f4bd4f]" : "bg-[#4ade80]"
-                    }`}>
-                      <Check className={`w-3 h-3 ${plan.popular ? "text-[#1d2d35]" : "text-white"}`} />
-                    </div>
-                    <span className={plan.popular ? "text-gray-200" : "text-gray-600"}>
-                      {feature}
-                    </span>
-                  </li>
-                ))}
-              </ul>
+            <div className="mb-6">
+              <span className="text-4xl font-bold">$119</span>
+              <span className="text-gray-400"> /year</span>
+            </div>
 
-              {plan.href.startsWith("/") ? (
-                <Link
-                  href={plan.href}
-                  className={`group flex items-center justify-center gap-2 w-full py-4 rounded-full font-bold text-lg transition-all ${
-                    plan.popular
-                      ? "bg-[#f4bd4f] text-[#1d2d35] hover:bg-[#e5ad40]"
-                      : "bg-[#1d2d35] text-white hover:bg-[#2d3d45]"
-                  }`}
-                >
-                  {plan.cta}
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </Link>
-              ) : (
-                <a
-                  href={plan.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`group flex items-center justify-center gap-2 w-full py-4 rounded-full font-bold text-lg transition-all ${
-                    plan.popular
-                      ? "bg-[#f4bd4f] text-[#1d2d35] hover:bg-[#e5ad40]"
-                      : "bg-[#1d2d35] text-white hover:bg-[#2d3d45]"
-                  }`}
-                >
-                  {plan.cta}
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </a>
-              )}
-            </motion.div>
-          ))}
+            <ul className="space-y-3 mb-8">
+              {[
+                "Everything in Free",
+                "All 8 add-ons included",
+                "Marketing campaigns",
+                "Advanced reporting",
+                "REST API access",
+                "Priority support",
+              ].map((feature) => (
+                <li key={feature} className="flex items-center gap-3 text-gray-300">
+                  <Check className="w-5 h-5 text-[#ffc800] flex-shrink-0" />
+                  {feature}
+                </li>
+              ))}
+            </ul>
+
+            <Link
+              href="/premium"
+              className="block w-full text-center py-3 bg-[#ffc800] text-[#1d2d35] rounded-full font-bold hover:bg-[#e6b400] transition-colors"
+            >
+              Go Premium →
+            </Link>
+          </motion.div>
         </div>
 
         {/* Trust Note */}
@@ -158,9 +118,10 @@ export default function BasecampPricing() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="text-center text-gray-500 mt-12"
+          className="text-center text-gray-500 mt-8"
         >
-          14-day money-back guarantee on Premium. No questions asked.
+          <span className="bg-[#ffc800] text-[#1d2d35] px-2 py-0.5 rounded font-medium">14-day money-back guarantee</span>
+          {" "}on Premium. No questions asked.
         </motion.p>
       </div>
     </section>
