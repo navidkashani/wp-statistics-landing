@@ -12,6 +12,7 @@
     "test:headed": "playwright test --headed"
   },
   "dependencies": {
+    "@fontsource/vazirmatn": "^5.2.8",
     "framer-motion": "^12.23.26",
     "lucide-react": "^0.561.0",
     "next": "16.0.10",
