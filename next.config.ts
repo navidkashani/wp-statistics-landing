@@ -5,8 +5,8 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
-  // Uncomment and set this if deploying to a subpath like username.github.io/repo-name
-  // basePath: "/wp-statistics-landing",
+  // Set basePath for GitHub Pages deployment at username.github.io/repo-name
+  basePath: "/wp-statistics-landing",
 };
 
 export default nextConfig;
